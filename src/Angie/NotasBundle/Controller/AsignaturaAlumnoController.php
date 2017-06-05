@@ -21,7 +21,7 @@ class AsignaturaAlumnoController extends Controller
                 array(), 
                 array('id'=>'desc')
             );
-    
+        //print_r($list[0].getAlumno());
         return $this->render('AngieNotasBundle:AsignaturaAlumno:index.html.twig', array(
             'list' => $list
         ));

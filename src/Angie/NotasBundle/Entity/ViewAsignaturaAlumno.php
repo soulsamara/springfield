@@ -5,12 +5,12 @@ namespace Angie\NotasBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AsignaturaAlumno
+ * ViewAsignaturaAlumno
  *
- * @ORM\Table(name="asignatura_alumno")
+ * @ORM\Table(name="view_asignatura_alumno")
  * @ORM\Entity(repositoryClass="Angie\NotasBundle\Repository\AsignaturaAlumnoRepository")
  */
-class AsignaturaAlumno
+class ViewAsignaturaAlumno
 {
     /**
      * @var int
@@ -20,18 +20,6 @@ class AsignaturaAlumno
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Asignatura")
-     * @ORM\JoinColumn(name="id_asignatura", referencedColumnName="id_asignatura")
-     */
-    private $asignatura;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumn(name="id_alumno", nullable=false, referencedColumnName="id")
-     */
-    private $alumno;
 
     /**
      * @var int
@@ -46,6 +34,20 @@ class AsignaturaAlumno
      * @ORM\Column(name="id_alumno", type="integer")
      */
     private $id_alumno;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alumno", type="string")
+     */
+    private $alumno;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="asignatura", type="string")
+     */
+    private $asignatura;
 
 
     /**
@@ -63,7 +65,7 @@ class AsignaturaAlumno
      *
      * @param integer $idAsignatura
      *
-     * @return AsignaturaAlumno
+     * @return ViewAsignaturaAlumno
      */
     public function setIdAsignatura($idAsignatura)
     {
@@ -87,7 +89,7 @@ class AsignaturaAlumno
      *
      * @param integer $idAlumno
      *
-     * @return AsignaturaAlumno
+     * @return ViewAsignaturaAlumno
      */
     public function setIdAlumno($idAlumno)
     {
@@ -106,19 +108,6 @@ class AsignaturaAlumno
         return $this->id_alumno;
     }
 
-    /**
-     * Set asignatura
-     *
-     * @param \Angie\NotasBundle\Entity\Asignatura $asignatura
-     *
-     * @return AsignaturaAlumno
-     */
-    public function setAsignatura(\Angie\NotasBundle\Entity\Asignatura $asignatura = null)
-    {
-        $this->asignatura = $asignatura;
-
-        return $this;
-    }
 
     /**
      * Get asignatura
@@ -131,20 +120,6 @@ class AsignaturaAlumno
     }
 
 
-
-    /**
-     * Set alumno
-     *
-     * @param \Angie\NotasBundle\Entity\Usuario $alumno
-     *
-     * @return AsignaturaAlumno
-     */
-    public function setAlumno(\Angie\NotasBundle\Entity\Usuario $alumno = null)
-    {
-        $this->alumno = $alumno;
-
-        return $this;
-    }
 
     /**
      * Get alumno

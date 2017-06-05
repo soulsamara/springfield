@@ -3,48 +3,36 @@
 {% block body %}
 	<section class="notasemestrealumnos">
 		<h2><i class="glyphicon glyphicon-file"></i> Notas</h2>
-		{% if is_granted("ROLE_ADMIN") %}
 
-			<div class="row">
-			    <div class="col-xs-11 text-left">
-			    	<a href="nuevonotasemestrealumno" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> Nueva Nota </a>
-			    </div>
-			</div>
-		{% endif %}
     	<hr/>
     	<div class="col-md-10 col-sm-10" >			      
 	      <div class="row">
-	        <div class="col-md-2"> <strong>Nota 1</strong></div>
-	        <div class="col-md-2"><strong>Nota 2</strong></div>
-	        <div class="col-md-2"><strong>Nota 3</strong></div>
 	        <div class="col-md-2"><strong>Asignatura</strong></div>
-	        <div class="col-md-2"><strong>Semestre</strong></div>
-	        <div class="col-md-2"><strong>Promedio</strong></div>
 	      </div>
 		 </div>
-		{% for item in list %}
+		{% for asignatura in asignaturas %}
 			
 			<div class="row">
-				{% if is_granted("ROLE_ADMIN") %}				 
+				
+				 
 					<div class="row">
 					    <div class="col-xs-11 text-right">
 							<div class="btn-group" role="group" aria-label="...">
-					        	<a href="editnotasemestrealumno/{{item.getId()}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-					        	<a href="eliminarnotasemestrealumno/{{item.getId()}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+								{% if is_granted("ROLE_ADMIN") %}
+								
+						        	<a href="notasmateria/{{asignatura.getId()}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+						        {% else %}
+						        	<a href="notasmateria/{{asignatura.getId()}}" class="btn btn-primary"><span class="glyphicon glyphicon-eye"></span></a>
+					        	{% endif %} 
 								  
 					        </div>
 					    </div>
 				    </div>
-			    {% endif %}   
+			      
 			    <div class="col-md-10 col-sm-10">
 			      
 			      <div class="row">
-			        <div class="col-md-2">{{item.getNota1()}}</div>
-			        <div class="col-md-2">{{item.getNota2()}}</div>
-			        <div class="col-md-2">{{item.getNota3()}}</div>
-			        <div class="col-md-2">{{item.getIdAsignaturaAlumno()}}</div>
-			        <div class="col-md-2">{{item.getSemestre()}}</div>
-			        <div class="col-md-2">{{item.getPromedio()}}</div>
+			        <span>{{asignatura.getAsignatura()}}</span>
 			      </div>
 			    </div>
 			</div>

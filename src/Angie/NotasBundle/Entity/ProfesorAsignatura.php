@@ -21,6 +21,19 @@ class ProfesorAsignatura
      */
     private $id;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumn(name="id_profesor", nullable=false, referencedColumnName="id")
+     */
+    private $profesor;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Asignatura")
+     * @ORM\JoinColumn(name="id_asignatura", referencedColumnName="id_asignatura")
+     */
+    private $asignatura;
+
      /**
      * @var int
      *
@@ -93,4 +106,56 @@ class ProfesorAsignatura
     {
         return $this->id_asignatura;
     }
+
+
+    /**
+     * Set asignatura
+     *
+     * @param \Angie\NotasBundle\Entity\Asignatura $asignatura
+     *
+     * @return AsignaturaAlumno
+     */
+    public function setAsignatura(\Angie\NotasBundle\Entity\Asignatura $asignatura = null)
+    {
+        $this->asignatura = $asignatura;
+
+        return $this;
+    }
+
+    /**
+     * Get asignatura
+     *
+     * @return \Angie\NotasBundle\Entity\Asignatura
+     */
+    public function getAsignatura()
+    {
+        return $this->asignatura;
+    }
+
+
+
+    /**
+     * Set profesor
+     *
+     * @param \Angie\NotasBundle\Entity\Usuario $profesor
+     *
+     * @return AsignaturaProfesor
+     */
+    public function setProfesor(\Angie\NotasBundle\Entity\Usuario $profesor = null)
+    {
+        $this->profesor = $profesor;
+
+        return $this;
+    }
+
+    /**
+     * Get profesor
+     *
+     * @return \Angie\NotasBundle\Entity\Usuario
+     */
+    public function getProfesor()
+    {
+        return $this->profesor;
+    }
+
 }

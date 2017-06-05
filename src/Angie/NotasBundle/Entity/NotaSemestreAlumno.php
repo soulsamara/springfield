@@ -49,6 +49,19 @@ class NotaSemestreAlumno
      */
     private $id_asignatura_alumno;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AsignaturaAlumno")
+     * @ORM\JoinColumn(name="id_asignatura_alumno", referencedColumnName="id_asignatura_alumno")
+     */
+    private $asignatura_alumno;
+
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=25)   
+     */
+    private $color;
 
      /**
      * @var string
@@ -218,5 +231,40 @@ class NotaSemestreAlumno
     public function getPromedio()
     {
         return $this->promedio;
+    }
+
+
+    /**
+     * Set asignatura_alumno
+     *
+     * @param \Angie\NotasBundle\Entity\AsignaturaAlumno $asignatura_alumno
+     *
+     * @return AsignaturaAlumnoAlumno
+     */
+    public function setAsignaturaAlumno(\Angie\NotasBundle\Entity\AsignaturaAlumno $asignatura_alumno = null)
+    {
+        $this->asignatura_alumno = $asignatura_alumno;
+
+        return $this;
+    }
+
+    /**
+     * Get asignatura_alumno
+     *
+     * @return \Angie\NotasBundle\Entity\AsignaturaAlumno
+     */
+    public function getAsignaturaAlumno()
+    {
+        return $this->asignatura_alumno;
+    }
+
+    /**
+     * Get color
+     *
+     * @return \Angie\NotasBundle\Entity\AsignaturaAlumno
+     */
+    public function getColor()
+    {
+        return $this->color;
     }
 }
