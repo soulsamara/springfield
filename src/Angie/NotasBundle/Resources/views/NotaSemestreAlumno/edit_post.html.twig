@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AngieNotasBundle:Crud:newPost{% endblock %}
+
+{% block body %}
+	<h1><i class="glyphicon glyphicon-pencil"></i> Editar </h1>
+
+	{{ form_start(form) }}
+	{{ form_errors(form.nota1) }}
+	  <div class="form-group">
+	  	{{ form_label(form.nota1) }}
+	    {{ form_widget(form.nota1, { 'attr': {'class': 'form-control'} }) }}
+
+	  </div>
+	    <div class="form-group">
+	  	{{ form_label(form.nota2) }}
+	    {{ form_widget(form.nota2, { 'attr': {'class': 'form-control'} }) }}
+
+	  </div>
+	    <div class="form-group">
+	  	{{ form_label(form.nota3) }}
+	    {{ form_widget(form.nota3, { 'attr': {'class': 'form-control'} }) }}
+
+	  </div>
+	    <div class="form-group">
+	  	{{ form_label(form.id_asignatura_alumno) }}
+	    {{ form_widget(form.id_asignatura_alumno, { 'attr': {'class': 'form-control'} }) }}
+
+	  </div>
+	    <div class="form-group">
+	  	{{ form_label(form.semestre) }}
+	    {{ form_widget(form.semestre, { 'attr': {'class': 'form-control'} }) }}
+
+
+	  <div class="text-right">
+		  {{ form_widget(form.save, { 'attr': {'class': 'btn btn-success'} }) }}
+		  <a href="{{ url('notasemestrealumno2') }}" class="btn btn-danger">Cancel</a>
+		{{ form_end(form) }}
+	  </div>
+{% endblock %}
+
+{% block javascripts %}
+	
+{% endblock %}

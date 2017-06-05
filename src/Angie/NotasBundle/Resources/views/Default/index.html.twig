@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Springfield{% endblock %}
+
+{% block body %}
+	<section class="articles">		
+    	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    	<h2><i class="glyphicon glyphicon-file"></i> Opciones</h2>	
+    	<hr/>
+		{% for item in menu %}			
+			<div class="row">
+				  
+			    
+			    <div class="col-md-10 col-sm-10">
+			      <h3><a href="{{item['Url']}}">{{item['Title']}}</a></h3>
+			      <div class="row">
+			       
+			      </div>
+			    </div>
+			</div>
+			<hr/>
+		
+		{% endfor %}
+	{% else %}	
+		<div class="col-md-10 col-sm-10"> 
+
+		Bienvenido A Springfield. Para poder ingresar debes loguearte.!			  
+
+
+		</div>
+
+	{% endif %}
+	</section>	
+{% endblock %}

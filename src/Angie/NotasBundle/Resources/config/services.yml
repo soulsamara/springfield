@@ -1,0 +1,4 @@
+services:
+#    angie_notas.example:
+#        class: Angie\NotasBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

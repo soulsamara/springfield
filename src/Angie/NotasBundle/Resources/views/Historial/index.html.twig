@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+	<section class="historial">
+		<h2><i class="glyphicon glyphicon-file"></i> Historial</h2>
+		{% if is_granted("ROLE_ADMIN") %}
+		{% endif %}
+			
+    	<hr/>
+    	<div class="col-md-10 col-sm-10" >			      
+	      <div class="row">
+	        <div class="col-md-2"> <strong>Id</strong></div>
+	        <div class="col-md-2"><strong>Fecha</strong></div>
+	        <div class="col-md-2"><strong>Accion Realizada</strong></div>
+	      </div>
+		 </div>
+		{% for item in list %}
+			
+			<div class="row">
+				{% if is_granted("ROLE_ADMIN") %}				 
+					<div class="row">
+					    <div class="col-xs-11 text-right">
+							<div class="btn-group" role="group" aria-label="...">				        	
+					        	<a href="eliminarhistorial/{{item.getId()}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+								  
+					        </div>
+					    </div>
+				    </div>
+			    {% endif %}   
+			    <div class="col-md-10 col-sm-10">
+			      
+			      <div class="row">
+			        <div class="col-md-2">{{item.getId()}}</div>
+			        <div class="col-md-2">{{item.getFecha()}}</div>
+			        <div class="col-md-2">{{item.getAccionRealizada()}}</div>
+			      </div>
+			    </div>
+			</div>
+			<hr/>
+		{% endfor %}
+
+	</section>	
+{% endblock %}

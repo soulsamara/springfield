@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AngieNotasBundle:Crud:newPost{% endblock %}
+
+{% block body %}
+	<h1><i class="glyphicon glyphicon-pencil"></i> Editar </h1>
+
+	{{ form_start(form) }}
+	{{ form_errors(form.asignatura) }}
+	  <div class="form-group">
+	  	{{ form_label(form.asignatura) }}
+	    {{ form_widget(form.asignatura, { 'attr': {'class': 'form-control'} }) }}
+
+	  </div>
+	  <div class="text-right">
+		  {{ form_widget(form.save, { 'attr': {'class': 'btn btn-success'} }) }}
+		  <a href="{{ url('homeasignatura') }}" class="btn btn-danger">Cancel</a>
+		{{ form_end(form) }}
+	  </div>
+{% endblock %}
+
+{% block javascripts %}
+	
+{% endblock %}

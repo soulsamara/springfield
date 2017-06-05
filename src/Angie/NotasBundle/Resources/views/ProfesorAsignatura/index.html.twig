@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+	<section class="profesorasignaturas">
+		<h2><i class="glyphicon glyphicon-file"></i> Profesor - Asignatura</h2>
+		{% if is_granted("ROLE_ADMIN") %}
+			<div class="row">
+			    <div class="col-xs-11 text-left">
+			    	<a href="nuevoprofesorasignatura" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> Nuevo Profesor  - Asignatura</a>
+			    </div>
+			</div>
+		{% endif %}
+    	<hr/>
+    	<div class="col-md-10 col-sm-10" >			      
+	      <div class="row">
+	        <div class="col-md-2"> <strong> Profesor</strong></div>
+	        <div class="col-md-2"><strong>Asignatura</strong></div>
+	      </div>
+		 </div>
+		{% for item in list %}
+			
+			<div class="row">
+				{% if is_granted("ROLE_ADMIN") %}
+					<div class="row">
+					    <div class="col-xs-11 text-right">
+							<div class="btn-group" role="group" aria-label="...">
+					        	<a href="editprofesorasignatura/{{item.getId()}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+					        	<a href="eliminarprofesorasignatura/{{item.getId()}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+								  
+					        </div>
+					    </div>
+				    </div>
+			    {% endif %}    
+			    <div class="col-md-10 col-sm-10">
+			      
+			      <div class="row">
+			        <div class="col-md-2">{{item.getIdProfesor()}}</div>
+			        <div class="col-md-2">{{item.getIdAsignatura()}}</div>
+			      </div>
+			    </div>
+			</div>
+			<hr/>
+		{% endfor %}
+
+	</section>	
+{% endblock %}
